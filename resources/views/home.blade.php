@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! Please choose option add new client or list of all clients!
                 </div>
             </div>
         </div>
