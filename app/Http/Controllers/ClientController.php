@@ -131,4 +131,8 @@ class ClientController extends Controller
     return $res;
     }
 
+    public function searchPage(){
+      return view('client.search');
+    }
+
 }
