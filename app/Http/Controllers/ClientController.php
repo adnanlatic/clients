@@ -14,7 +14,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        // Get all clients
         $clients = Client::get();
+        // Return view index and pass variable clients
         return view('client.index',compact('clients'));
     }
 
@@ -25,7 +27,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        // Return view create new client
+        return view('client.create');
     }
 
     /**
@@ -36,7 +39,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Store new client
+        Client::create($request->all());
+        // Redirect to index page
+        return redirect('client');
     }
 
     /**
