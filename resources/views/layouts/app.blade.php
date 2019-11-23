@@ -39,6 +39,9 @@
                       <li class="nav-item">
                       <a class="nav-link" href="{{url('client')}}">List of clients</a>
                     </li>
+                      <li class="nav-item">
+                      <a class="nav-link" href="{{url('search')}}">AJAX Search</a>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

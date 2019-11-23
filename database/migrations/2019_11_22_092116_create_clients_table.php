@@ -17,9 +17,9 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('address');
-            $table->string('telephone');
-            $table->date('birthday');
+            $table->string('address')->nullable();
+            $table->string('telephone')->nullable();
+            $table->date('birthday')->nullable();
             $table->timestamps();
         });
     }

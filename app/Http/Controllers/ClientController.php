@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
@@ -37,7 +38,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         // Store new client
         Client::create($request->all());
@@ -64,7 +65,11 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+      // Find and pass variable client
+      $client = Client::find($client->id);
+      // return edit page
+      return view('client.edit',compact('client'));
+
     }
 
     /**
@@ -74,9 +79,12 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+      // Find and update client
+      Client::find($client->id)->update($request->all());
+      // Redirect to index page after editing
+      return redirect('client');
     }
 
     /**
@@ -87,6 +95,9 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        // Find and delete client
+        Client::find($client->id)->delete();
+        // Redirect to index page after deleting
+        return redirect('client');
     }
 }
