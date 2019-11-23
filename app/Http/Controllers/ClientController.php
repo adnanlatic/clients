@@ -100,4 +100,35 @@ class ClientController extends Controller
         // Redirect to index page after deleting
         return redirect('client');
     }
+
+    public function search(Request $request){
+    // Get all results from search criteria
+    $clients = Client::where('firstname', 'like', '%' . $request->sch . '%')->get();
+
+    //save result to variable
+    $res = '<table style="text-align:center" class="table table-flush dataTable">
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Telephone</th>
+    <th scope="col">Birthday</th>
+    </tr>';
+    foreach($clients as $client){
+    $res.= '<tr>
+      <th scope="row">'.$client->iteration.'</th>
+      <td>'.$client->firstname.'</td>
+      <td>'.$client->lastname.'</td>
+      <td>'.$client->address.'</td>
+      <td>'.$client->telephone.'</td>
+      <td>'.$client->birthday.'</td>
+    </tr>';
+   }
+   $res .= '</table>';
+
+    //return variable
+    return $res;
+    }
+
 }
